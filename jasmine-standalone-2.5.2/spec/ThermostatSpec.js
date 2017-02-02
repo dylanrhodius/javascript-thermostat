@@ -10,28 +10,67 @@ describe ("Thermostat", function() {
     it("starts at 20 degrees", function (){
       expect(thermostat.temperature).toBe(20)
     });
-  });
-
-  describe("#increase", function(){
-    it("increases the temperature", function(){
-      thermostat.increase(5)
-      expect(thermostat.temperature).toBe(25)
+    it("is not in powersave mode", function(){
+        expect(thermostat._isPowerSave).toBe(false)
     });
   });
 
-  describe("#decrease", function(){
-    it("decreases the temperature", function(){
-
-      thermostat.decrease(5)
-      expect(thermostat.temperature).toBe(15)
-    });
-
-    it("until the minimum of 10 degrees", function(){
-      // debugger;
-      expect(function() {thermostat.decrease(11)}).toThrow("Set at minimum temperature 10 degrees")
-      expect(thermostat.temperature).toBe(10)
+  describe("#powerSaveOn", function(){
+    it("changes the temperature range", function() {
+        thermostat.powerSaveOn()
+        expect(thermostat.MAX_TEMP).toBe(25)
+        expect(thermostat._isPowerSave).toBe(true)
     });
   });
 
+  describe("#powerSaveOff", function(){
+    it("changes the temperature range", function() {
+        thermostat.powerSaveOn()
+        thermostat.powerSaveOff()
+        expect(thermostat.MAX_TEMP).toBe(32)
+        expect(thermostat._isPowerSave).toBe(false)
+    });
+  });
+
+
+  describe("when power save off", function(){
+
+    describe("#increase", function(){
+      it("increases the temperature", function(){
+        thermostat.increase(5)
+        expect(thermostat.temperature).toBe(25)
+      });
+      it("until maximum temperature", function(){
+        expect(function() {thermostat.increase(13)}).toThrow("Temperature has been set at 32 as this is maximum")
+        expect(thermostat.temperature).toBe(32)
+      });
+    });
+
+    describe("#decrease", function(){
+      it("decreases the temperature", function(){
+
+        thermostat.decrease(5)
+        expect(thermostat.temperature).toBe(15)
+      });
+
+      it("until the minimum of 10 degrees", function(){
+        // debugger;
+        expect(function() {thermostat.decrease(11)}).toThrow("Temperature has been set at 10 as cannot go below")
+        expect(thermostat.temperature).toBe(10)
+      });
+    });
+  })
+
+  describe("when power save on", function(){
+
+    describe("#increase", function(){
+      it("until maximum power save temperature", function(){
+        thermostat.powerSaveOn()
+        expect(function() {thermostat.increase(13)}).toThrow("Temperature has been set at 25 as this is maximum")
+        expect(thermostat.temperature).toBe(25)
+      });
+    });
+
+  });
 
 });
