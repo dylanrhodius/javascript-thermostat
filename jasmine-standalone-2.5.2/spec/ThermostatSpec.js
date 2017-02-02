@@ -6,12 +6,12 @@ describe ("Thermostat", function() {
     thermostat = new Thermostat();
   });
 
-  describe('when initialized', function () {
+  describe('by default', function () {
     it("starts at 20 degrees", function (){
       expect(thermostat.temperature).toBe(20)
     });
-    it("is not in powersave mode", function(){
-        expect(thermostat._isPowerSave).toBe(false)
+    it("is in Powersave mode", function(){
+        expect(thermostat._isPowerSave).toBe(true)
     });
   });
 
@@ -21,6 +21,8 @@ describe ("Thermostat", function() {
         expect(thermostat.MAX_TEMP).toBe(25)
         expect(thermostat._isPowerSave).toBe(true)
     });
+
+
   });
 
   describe("#powerSaveOff", function(){
