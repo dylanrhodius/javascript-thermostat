@@ -5,7 +5,7 @@ function Thermostat () {
   this._isPowerSave = true
 };
 
-Thermostat.prototype.increase = function(number){
+Thermostat.prototype.increase = function(number = 1){
   if (this.maxTempExceeded(number)){
     this.temperature = this.MAX_TEMP;
       throw("Temperature has been set at " + this.MAX_TEMP + " as this is maximum")
@@ -14,7 +14,7 @@ Thermostat.prototype.increase = function(number){
   this.temperature += number;
 };
 
-Thermostat.prototype.decrease = function(number){
+Thermostat.prototype.decrease = function(number = 1){
   if ((this.temperature - number) < this.MIN_TEMP)
     {this.temperature = this.MIN_TEMP;
       throw("Temperature has been set at 10 as cannot go below")
@@ -38,4 +38,14 @@ Thermostat.prototype.maxTempExceeded = function(number){
 
 Thermostat.prototype.reset = function() {
   this.temperature = 20
+};
+
+Thermostat.prototype.usage = function() {
+  if (this.temperature >= 25){
+    return "High"
+  } else if (this.temperature < 18) {
+    return "Low"
+  } else {
+    return "Medium"
+  };
 };
