@@ -21,7 +21,7 @@ describe ("Thermostat", function() {
         expect(thermostat.MAX_TEMP).toBe(25)
         expect(thermostat._isPowerSave).toBe(true)
     });
-
+    
 
   });
 
