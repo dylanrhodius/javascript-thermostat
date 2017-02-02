@@ -79,4 +79,12 @@ describe ("Thermostat", function() {
 
   });
 
+  describe("#reset", function() {
+    it("sets the temperature to 20 degrees", function() {
+      thermostat.increase(5)
+      thermostat.reset()
+      expect(thermostat.temperature).toBe(20)
+    });
+  });
+
 });

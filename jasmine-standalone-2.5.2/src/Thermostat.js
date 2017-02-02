@@ -35,3 +35,7 @@ Thermostat.prototype.powerSaveOff = function(){
 Thermostat.prototype.maxTempExceeded = function(number){
   return ((this.temperature + number) > this.MAX_TEMP)
 };
+
+Thermostat.prototype.reset = function() {
+  this.temperature = 20
+};
