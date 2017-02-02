@@ -37,6 +37,10 @@ describe ("Thermostat", function() {
 
   describe("when power save off", function(){
 
+    beforeEach(function() {
+      thermostat.powerSaveOff()
+    });
+
     describe("#increase", function(){
       it("increases the temperature", function(){
         thermostat.increase(5)
