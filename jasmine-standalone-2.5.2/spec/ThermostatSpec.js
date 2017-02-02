@@ -21,9 +21,15 @@ describe ("Thermostat", function() {
 
   describe("#decrease", function(){
     it("decreases the temperature", function(){
-      // debugger;
+
       thermostat.decrease(5)
       expect(thermostat.temperature).toBe(15)
+    });
+
+    it("until the minimum of 10 degrees", function(){
+      // debugger;
+      expect(function() {thermostat.decrease(11)}).toThrow("Set at minimum temperature 10 degrees")
+      expect(thermostat.temperature).toBe(10)
     });
   });
 
