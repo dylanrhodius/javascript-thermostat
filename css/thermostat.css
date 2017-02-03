@@ -53,3 +53,7 @@ button {
 .medium {
   color: #ffffff;
 }
+
+#weather {
+  float: right;
+}

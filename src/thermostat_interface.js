@@ -8,12 +8,11 @@ $(document).ready(function(){
     $( "#powersave" ).text(thermostat.powerSaveStatus());
   };
 
-  $.get( "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=9c01ca583b73254a087834fc09e38d23", function( response ) {
+  $.get( "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=adeca31274f85c014d83ed995baf94d4", function( response ) {
     $("#weather").text(response.name) +
     $("#weather").append(": ")
     $("#weather").append(Math.floor(response.main.temp))
     $("#weather").append("°C")
-    console.log(response)
 });
 
   updateTemperature()
