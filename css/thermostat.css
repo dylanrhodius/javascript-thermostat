@@ -57,3 +57,8 @@ button {
 #weather {
   float: right;
 }
+
+.buttons {
+  margin: 0 auto;
+  width: 600px;
+}
