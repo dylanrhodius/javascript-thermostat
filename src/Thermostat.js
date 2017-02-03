@@ -22,7 +22,14 @@ Thermostat.prototype.decrease = function(number = 1){
   else this.temperature -= number
 };
 
+Thermostat.prototype.powerSaveStatus = function(){
+  return (this._isPowerSave ? "On" : "Off")
+};
+
 Thermostat.prototype.powerSaveOn = function(){
+    if (this.temperature > 25){
+      this.temperature = 25
+    }
     this.MAX_TEMP = 25;
     this._isPowerSave = true
 };

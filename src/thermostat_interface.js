@@ -1,11 +1,42 @@
-var thermostat = new Thermostat()
+$(document).ready(function(){
 
-$( "#temp" ).text(function(){
-  return thermostat.temperature
-});
+  var thermostat = new Thermostat()
 
-$( "#increase_button" ).click(function(){
+  function updateTemperature(){
+    $( "#temp" ).text(thermostat.temperature);
+    $( "#powersave" ).text(thermostat.powerSaveStatus());
+  };
 
-  thermostat.increase(2);
+
+
+  updateTemperature()
+
+  $( "#increase" ).click(function(){
+    thermostat.increase();
+    updateTemperature();
+  });
+
+  $( "#decrease" ).click(function(){
+    thermostat.decrease();
+    updateTemperature();
+  });
+
+
+  $( "#powerSaveOff_button" ).click(function(){
+      thermostat.powerSaveOff();
+      updateTemperature();
+  });
+
+  $( "#powerSaveOn_button" ).click(function(){
+      thermostat.powerSaveOn();
+      updateTemperature();
+  });
+
+  $( "#reset" ).click(function(){
+      thermostat.reset();
+      updateTemperature();
+  });
+
+
 
 });
