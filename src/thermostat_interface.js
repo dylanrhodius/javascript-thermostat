@@ -1,11 +1,13 @@
 var thermostat = new Thermostat()
 
+
+
 $( "#temp" ).text(function(){
   return thermostat.temperature
 });
 
-$( "#increase_button" ).click(function( event ){
+$( "#increase_button" ).click(function(){
 
-  thermostat.increase()
+  thermostat.increase(2);
 
 });
