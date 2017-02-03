@@ -8,12 +8,16 @@ $(document).ready(function(){
     $( "#powersave" ).text(thermostat.powerSaveStatus());
   };
 
-  $.get( "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=adeca31274f85c014d83ed995baf94d4", function( response ) {
-    $("#weather").text(response.name) +
+  $('#select-city').submit(function(event) {
+  event.preventDefault();
+  var city = $('#current-city').val();
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=adeca31274f85c014d83ed995baf94d4&units=metric', function(data) {
+    $("#weather").text(data.name) +
     $("#weather").append(": ")
-    $("#weather").append(Math.floor(response.main.temp))
+    $("#weather").append(Math.floor(data.main.temp))
     $("#weather").append("°C")
-});
+  });
+  });
 
   updateTemperature()
 
@@ -43,6 +47,13 @@ $(document).ready(function(){
       updateTemperature();
   });
 
+
+  $.get( "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=adeca31274f85c014d83ed995baf94d4", function( response ) {
+    $("#weather").text(response.name) +
+    $("#weather").append(": ")
+    $("#weather").append(Math.floor(response.main.temp))
+    $("#weather").append("°C")
+});
 
 
 });
