@@ -21,7 +21,7 @@ describe ("Thermostat", function() {
         expect(thermostat.MAX_TEMP).toBe(25)
         expect(thermostat._isPowerSave).toBe(true)
     });
-    
+
 
   });
 
@@ -90,17 +90,17 @@ describe ("Thermostat", function() {
   describe("#usage", function(){
     it("above 25 is high", function(){
       thermostat.temperature = 25
-      expect(thermostat.usage()).toEqual('High')
+      expect(thermostat.usage()).toEqual('high')
     });
 
     it("between 18 and 25", function(){
       thermostat.temperature = 20
-      expect(thermostat.usage()).toEqual('Medium')
+      expect(thermostat.usage()).toEqual('medium')
     });
 
     it("below 18 is low", function(){
       thermostat.temperature = 17
-      expect(thermostat.usage()).toEqual('Low')
+      expect(thermostat.usage()).toEqual('low')
     });
   });
 

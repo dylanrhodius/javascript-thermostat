@@ -42,6 +42,14 @@ button {
   padding: 10px;
 }
 
-.change {
+.high {
+  color: #c22525;
+}
 
+.low {
+  color: #2dcc0c;
+}
+
+.medium {
+  color: #ffffff;
 }

@@ -4,6 +4,7 @@ $(document).ready(function(){
 
   function updateTemperature(){
     $( "#temp" ).text(thermostat.temperature);
+    $('#temp').attr('class', thermostat.usage());
     $( "#powersave" ).text(thermostat.powerSaveStatus());
   };
 
