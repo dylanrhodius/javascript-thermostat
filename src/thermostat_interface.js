@@ -1,7 +1,5 @@
 var thermostat = new Thermostat()
 
-
-
 $( "#temp" ).text(function(){
   return thermostat.temperature
 });
